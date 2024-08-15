@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block body %}
+
+    <center> <br> <h1>{{user_name}}'s Blogs</h1></center>
+    <center> <br> <a href="/followers/{{user_name}}/{{username}}" type="button" class="btn btn-outline-dark btn-sm mx-1">Go to Profile</a></center>
+    <!-- <center> <br> <a href="/followers/{{user_name}}/username" type="button" class="btn btn-outline-dark btn-sm mx-1">Go to Profile</a></center> -->
+
+    <div class="container my-5">
+        <h2>Your Blogs</h2>
+        {% if allTodo|length == 0 %}
+        <div class="alert alert-primary" role="alert">
+           NO RECORD
+          </div>
+                        
+                    {% else %}
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">sno</th>
+                <th scope="col">Title</th>
+                <th scope="col">Date-Time</th>
+                <!-- <th scope="col">Time</th> -->
+              </tr>
+            </thead>
+            <tbody>
+              {% for todo in allTodo %}
+              {%if todo.user == user_name%}
+              <tr>
+                <th scope="row">{{loop.index}}</th>
+                <td>{{todo.title}}</td>
+                <!-- <td>{{todo.desc}}</td> -->
+                <td>{{todo.date_created}}</td>
+                <!-- <td><a href="/update/{{todo.sno}}/{{username}}" type="button" class="btn btn-outline-dark btn-sm mx-1">Update</button></td>
+                <td><a href="/delete/{{todo.sno}}/{{username}}" type="button" class="btn btn-outline-dark btn-sm mx-1">Delete</button></td> -->
+                <td><a href="/visit_view/{{todo.sno}}/{{user_name}}/{{username}}" type="button" class="btn btn-outline-dark btn-sm mx-1">View Blog</button></td>
+              </tr>
+              {% endif %}
+              {% endfor %}
+              
+            </tbody>
+          </table>
+          {% endif %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+{% endblock body %}

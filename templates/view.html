@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block body %}
+
+
+    <div class="container my-3">
+        <h2>View Blog {{todo.sno}}</h2>
+        <form action="/view/{{todo.sno}}/{{username}}" method="POST">
+            <div class="mb-3">
+              <label for="title" class="form-label" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Blog Title</label>
+              <div style="display: none;"><input type="text" class="form-control" name="title" id="title" value="{{todo.title}}" aria-describedby="emailHelp"></div>
+              <br> <span>{{todo.title}}</span>
+            </div>
+            <div class="mb-3">
+              <label for="desc" class="form-label" style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Blog Content</label>
+              <div style="display: none;"><input type="text" class="form-control" value="{{todo.desc}}" name="desc" id="desc"></div>
+              <br> <span>{{todo.desc}}</span>
+            </div>
+            <button type="submit" class="btn btn-dark">Back</button>
+          </form>
+          <!-- <button type="submit" class="btn btn-dark"><a href="/dashboard/{{username}}" style="color: white;">Back</a></button> -->
+          <!-- <td><a href="/dashboard/{{username}}" type="button" class="btn btn-dark">Back</button></td> -->
+    </div>
+    
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+{% endblock body %}
